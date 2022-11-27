@@ -189,46 +189,6 @@ local function ChallengeModeTooltipText()
     return tooltipText
 end
 
-function ChallengeModeRightClickMenuPrepare()
-    Console.Print("ChallengeModeRightClickMenuPrepare")
-
-    TitanPanelRightClickMenu_AddTitle(TitanPlugins[PLUGIN_NAME].menuText)
-    TitanPanelRightClickMenu_AddToggleIcon(PLUGIN_NAME)
-    TitanPanelRightClickMenu_AddToggleLabelText(PLUGIN_NAME)
-
-    L_UIDropDownMenu_AddButton({
-        checked = TitanGetVar(PLUGIN_NAME, "DisplayOnRightSide"),
-        text = TITAN_L["TITAN_CLOCK_MENU_DISPLAY_ON_RIGHT_SIDE"],
-        func = function(self)
-            TitanToggleVar(PLUGIN_NAME, "DisplayOnRightSide");
-            TitanPanel_InitPanelButtons();
-        end
-    });
-
-    L_UIDropDownMenu_AddButton({
-        checked = TitanGetVar(PLUGIN_NAME, "LabelTextColor"),
-        text = L["Color Label Text"],
-        func = function(self)
-            TitanToggleVar(PLUGIN_NAME, "LabelTextColor")
-            TitanPanelButton_UpdateButton(PLUGIN_NAME)
-            TitanPanel_InitPanelButtons();
-        end
-    });
-
-    L_UIDropDownMenu_AddButton({
-        checked = TitanGetVar(PLUGIN_NAME, "DisplayWeeklyBest"),
-        text = L["Display Weekly Best Level"],
-        func = function(self)
-            TitanToggleVar(PLUGIN_NAME, "DisplayWeeklyBest")
-            TitanPanelButton_UpdateButton(PLUGIN_NAME)
-            TitanPanel_InitPanelButtons();
-        end
-    });
-
-    TitanPanelRightClickMenu_AddSpacer();
-    TitanPanelRightClickMenu_AddCommand(TITAN_L["TITAN_PANEL_MENU_HIDE"], PLUGIN_NAME, TITAN_PANEL_MENU_FUNC_HIDE);
-end
-
 function GetInterfaceIcon()
     local level, rewardLevel, nextRewardLevel = C_MythicPlus.GetWeeklyChestRewardLevel();
     if C_MythicPlus.IsWeeklyRewardAvailable() then
