@@ -4,27 +4,31 @@ local L = LibStub("AceLocale-3.0"):GetLocale("FastMythPlus")
 local TITAN_L = LibStub("AceLocale-3.0"):GetLocale("Titan", true)
 local PLUGIN_NAME = "FastMythPlus"
 
--- local Console = LibStub("AceConsole-3.0")
 local Console = {}
 function Console:Print() end
 
 local sortedMaps = {}
 local chestRewardLevel = {
     [0] = nil,
-    [2] = 278,
-    [3] = 278,
-    [4] = 278,
-    [5] = 281,
-    [6] = 281,
-    [7] = 285,
-    [8] = 288,
-    [9] = 288,
-    [10] = 291,
-    [11] = 294,
-    [12] = 298,
-    [13] = 298,
-    [14] = 301,
-    [15] = 304,
+    [2] = 376,
+    [3] = 376,
+    [4] = 379,
+    [5] = 379,
+    [6] = 382,
+    [7] = 385,
+    [8] = 385,
+    [9] = 389,
+    [10] = 392,
+    [11] = 392,
+    [12] = 392,
+    [13] = 392,
+    [14] = 395,
+    [15] = 398,
+    [16] = 398,
+    [17] = 402,
+    [18] = 402,
+    [19] = 405,
+    [20] = 405,
 };
 
 function GetLevelRewardColor(mythicLevel)
@@ -65,7 +69,6 @@ function ChallengeModeMapsUpdatedCallback(p_frame, p_event, ...)
             C_ChallengeMode.RequestLeaders(mapChallengeModeId)
         end
 
-        -- local lastCompletion, bestCompletion, bestLevel, affixes = C_ChallengeMode.GetMapPlayerStats(mapChallengeModeId);
         local duration, bestCompletion, completionDate, affixes, members = C_MythicPlus.GetWeeklyBestForMap(mapChallengeModeId);
         if (not bestCompletion) then
             bestCompletion = 0
@@ -73,7 +76,6 @@ function ChallengeModeMapsUpdatedCallback(p_frame, p_event, ...)
         if (bestCompletion > weeklyBest) then
             weeklyBest = bestCompletion
         end
----        local recentBestTime, recentBestLevel = C_MythicPlus.GetWeeklyBestForMap(mapChallengeModeId);
         tinsert(newMaps, { id = mapChallengeModeId, level = bestCompletion, affixes = affixes, name = mapNames[mapChallengeModeId], recentBestLevel = bestCompletion });
     end
 
@@ -111,14 +113,11 @@ local function ChallengeModeButtonText()
         local dungeonLabelColor
         if (TitanGetVar(PLUGIN_NAME, "LabelTextColor")) then
             if bestMap and bestMap.name then
-                -- color by dungeon level
                 dungeonLabelColor = GetLevelRewardColor(bestMap.level)
             else
-                -- color red - no dungeons
                 dungeonLabelColor = RED_FONT_COLOR
             end
         else
-            -- do not color
             dungeonLabelColor = NORMAL_FONT_COLOR
         end
 
