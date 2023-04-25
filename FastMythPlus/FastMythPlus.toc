@@ -3,7 +3,7 @@
 ## Notes: Titan Panel Plugin for Mythic+ Dungeons
 ## Author: BloddDragon2580
 ## Dependencies: Titan
-## Version: 1.7
+## Version: 1.5
 ## DefaultState: Enabled
 
 embeds.xml
