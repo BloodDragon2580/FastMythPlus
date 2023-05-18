@@ -3,7 +3,7 @@
 ## Notes: Titan Panel Plugin for Mythic+ Dungeons
 ## Author: BloddDragon2580
 ## Dependencies: Titan
-## Version: 1.7
+## Version: 1.8
 ## DefaultState: Enabled
 ## IconTexture: Interface\Icons\inv_relics_hourglass
 
