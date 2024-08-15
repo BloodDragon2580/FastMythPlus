@@ -242,7 +242,7 @@ function RegisterPlugin()
         icon = GetInterfaceIcon(),
         iconWidth = 16,
         category = "Information",
-        version = GetAddOnMetadata(ADDON_NAME, "Version"),
+        version = C_AddOns.GetAddOnMetadata(ADDON_NAME, "Version"),
         savedVariables = {
             ShowIcon = 1,
             DisplayOnRightSide = false,
