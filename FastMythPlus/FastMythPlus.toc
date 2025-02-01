@@ -3,7 +3,7 @@
 ## Notes: Titan Panel Plugin for Mythic+ Dungeons
 ## Author: BloddDragon2580
 ## Dependencies: Titan
-## Version: 6.9
+## Version: 7.0
 ## DefaultState: Enabled
 ## IconTexture: Interface\AddOns\FastMythPlus\Media\Texture\logo
 
