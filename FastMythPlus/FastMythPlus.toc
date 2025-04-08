@@ -1,9 +1,9 @@
-## Interface: 110100
+## Interface: 110105
 ## Title: Titan Panel [|cffd6266cFastMythPlus|r]
 ## Notes: Titan Panel Plugin for Mythic+ Dungeons
 ## Author: BloddDragon2580
 ## Dependencies: Titan
-## Version: 7.6
+## Version: 7.7
 ## DefaultState: Enabled
 ## IconTexture: Interface\AddOns\FastMythPlus\Media\Texture\logo
 
