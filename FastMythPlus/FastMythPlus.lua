@@ -7,6 +7,23 @@ local PLUGIN_NAME = "FastMythPlus"
 local Console = {}
 function Console:Print() end
 
+-- =========================
+-- COMPAT: Weekly Reward API
+-- =========================
+local function IsWeeklyRewardAvailableCompat()
+    -- Older clients
+    if C_MythicPlus and C_MythicPlus.IsWeeklyRewardAvailable then
+        return C_MythicPlus.IsWeeklyRewardAvailable()
+    end
+
+    -- Midnight / newer clients
+    if C_WeeklyRewards and C_WeeklyRewards.HasAvailableRewards then
+        return C_WeeklyRewards.HasAvailableRewards()
+    end
+
+    return false
+end
+
 local sortedMaps = {}
 local chestRewardLevel = {
     [0] = nil,
@@ -140,7 +157,7 @@ local function ChallengeModeTooltipText()
     local bestRunLevel = 0;
 
     local level, rewardLevel, nextRewardLevel = C_MythicPlus.GetWeeklyChestRewardLevel();
-    local rewardAvailable = C_MythicPlus.IsWeeklyRewardAvailable()
+    local rewardAvailable = IsWeeklyRewardAvailableCompat()
 
     if rewardAvailable then
         Console.Print("reward available")
@@ -190,7 +207,7 @@ end
 
 function GetInterfaceIcon()
     local level, rewardLevel, nextRewardLevel = C_MythicPlus.GetWeeklyChestRewardLevel();
-    if C_MythicPlus.IsWeeklyRewardAvailable() then
+    if IsWeeklyRewardAvailableCompat() then
         return "Interface\\Icons\\Achievement_challengemode_gold"
     else
         return "Interface\\Icons\\Achievement_challengemode_silver"
