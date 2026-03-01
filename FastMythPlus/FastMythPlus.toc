@@ -1,7 +1,7 @@
 ## Interface: 120001
 ## Title: Titan Panel [|cffd6266cFastMythPlus|r]
 ## Notes: Titan Panel Plugin for Mythic+ Dungeons
-## Author: BloddDragon2580
+## Author: BloodDragon2580
 ## Dependencies: Titan
 ## Version: 11.1
 ## DefaultState: Enabled
