@@ -28,40 +28,18 @@ local sortedMaps = {}
 local chestRewardLevel = {
     [0]  = nil,
 
-    -- +2 / +3
-    [2]  = 259,
-    [3]  = 259,
+    -- Midnight Season 2 (2026) - Great Vault
+    [2]  = 305,
+    [3]  = 305,
+    [4]  = 308,
+    [5]  = 308,
+    [6]  = 311,
+    [7]  = 315,
+    [8]  = 315,
+    [9]  = 315,
 
-    -- +4 / +5
-    [4]  = 263,
-    [5]  = 263,
-
-    -- +6 / +7
-    [6]  = 269,
-    [7]  = 269,
-
-    -- +8 / +9
-    [8]  = 269,
-    [9]  = 269,
-
-    -- +10 / +11
-    [10] = 272,
-    [11] = 272,
-
-    -- +12–14
-    [12] = 276,
-    [13] = 276,
-    [14] = 276,
-
-    -- +15–17
-    [15] = 279,
-    [16] = 279,
-    [17] = 279,
-
-    -- +18+
-    [18] = 282,
-    [19] = 282,
-    [20] = 282,
+    -- +10 and above are capped at Myth 1/6
+    [10] = 318,
 }
 
 function GetLevelRewardColor(mythicLevel)
@@ -204,11 +182,9 @@ local function ChallengeModeTooltipText()
             tooltipText = tooltipText .. TitanUtils_GetColoredText(L["You have not completed any mythic keystone dungeons this week."], NORMAL_FONT_COLOR)
         else
 
-            if (bestRunLevel > 15) then
-                weeklyRewardItemLevel = chestRewardLevel[15]
-            else
-                weeklyRewardItemLevel = chestRewardLevel[bestRunLevel]
-            end
+            -- Midnight Season 2: Great Vault item level caps at +10.
+            local rewardKeyLevel = math.min(bestRunLevel, 10)
+            weeklyRewardItemLevel = chestRewardLevel[rewardKeyLevel]
 
             local highestDungeonThisWeek = string.format(L["You completed a +%s this week."], bestRunLevel)
             local weeklyChestContents = string.format(L["Your next weekly chest will contain an item of item level %s or above."], weeklyRewardItemLevel)
